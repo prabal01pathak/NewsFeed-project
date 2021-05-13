@@ -27,7 +27,9 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-practice3.py
+
+news_story_test.py
+*~
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -56,12 +58,6 @@ coverage.xml
 # Translations
 *.mo
 *.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
 
 # Flask stuff:
 instance/
