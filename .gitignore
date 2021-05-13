@@ -29,7 +29,8 @@ MANIFEST
 
 
 news_story_test.py
-*~
+*.py~
+*.un~
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

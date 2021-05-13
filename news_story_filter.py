@@ -1,5 +1,4 @@
 # Name:Prabal Pathak
-# Collaborators:
 
 import feedparser
 import string
@@ -113,7 +112,6 @@ class DescriptionTrigger(PhraseTrigger):
         return False
 
 # TIME TRIGGERS
-# Convert time from string to a datetime before saving it as an attribute.
 class TimeTrigger(Trigger):
     def __init__(self,pubdate):
         self.pubdate = datetime.strptime(pubdate, "%d %b %Y %H:%M:%S")
@@ -185,7 +183,6 @@ def filter_stories(stories, triggerlist):
             if triggers.evaluate(i)==True:
                 lists.append(i)
     # This is a placeholder
-    # (we're just returning all the stories, with no filtering)
     return lists
 
 
@@ -193,7 +190,6 @@ def filter_stories(stories, triggerlist):
 #======================
 # User-Specified Triggers
 #======================
-# Problem 11
 def read_trigger_config(filename):
     """
     filename: the name of a trigger configuration file
@@ -201,8 +197,6 @@ def read_trigger_config(filename):
     Returns: a list of trigger objects specified by the trigger configuration
         file.
     """
-    # We give you the code to read in the file and eliminate blank lines and
-    # comments. You don't need to know how it works for now!
     trigger_file = open(filename, 'r')
     lines = []
     for line in trigger_file:
@@ -211,11 +205,8 @@ def read_trigger_config(filename):
             lines.append(line)
     hash_table ={}
 
-    # TODO: Problem 11
-    # line is the list of lines that you need to parse and for which you need
-    # to build triggers
 
-    print(lines) # for now, print it so you see what it contains!
+    print(lines) 
     return lines
 
 
@@ -223,7 +214,6 @@ def read_trigger_config(filename):
 SLEEPTIME = 120 #seconds -- how often we poll
 
 def main_thread(master):
-    # A sample trigger list - might need to change the phrases to correspond
     # to what is currently in the news
     try:
         t1 = TitleTrigger("a")
@@ -232,11 +222,6 @@ def main_thread(master):
         t4 = AndTrigger(t2, t3)
         triggerlist = [t1, t2]
 
-        # Problem 11# TODO: After implementing read_trigger_config, uncomment this line 
-        # triggerlist = read_trigger_config('triggers.txt')
-        
-        # HELPER CODE - you don't need to understand this!
-        # Draws the popup window that displays the filtered stories
         # Retrieves and filters the stories from the RSS feeds
         frame = Frame(master)
         frame.pack(side=BOTTOM)
@@ -255,9 +240,6 @@ def main_thread(master):
         button.pack(side=BOTTOM)
         guidShown = []
         def get_cont(newstory):
-        #     print(newstory.get_guid())
-        #     print(newstory.get_title())
-        #     print(newstory.get_description())
             if newstory.get_guid() not in guidShown:
                 cont.insert(END, newstory.get_title()+"\n", "title")
                 cont.insert(END, "\n---------------------------------------------------------------\n", "title")
@@ -271,7 +253,6 @@ def main_thread(master):
             stories = process("http://news.google.com/news?output=rss")
 
 
-            # stories = filter_stories(stories, triggerlist)
             list(map(get_cont,stories))
             scrollbar.config(command=cont.yview)
 
