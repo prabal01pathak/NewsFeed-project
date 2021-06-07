@@ -5,7 +5,7 @@ import string
 import time
 import threading
 from project_util import translate_html
-from mtTkinter import *
+from tkinter import *
 from datetime import datetime
 import pytz
 
